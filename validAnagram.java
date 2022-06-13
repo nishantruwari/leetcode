@@ -1,19 +1,22 @@
+import java.util.Arrays;
+
 public class validAnagram {
     public static void main(String[] args) {
-        String str = "anagramt";
-        String str1[] = str.split("");
-        String str2 = "nagram";
-        int n = str.length();
+        String str = "aabc";
+        String s = "abbc";
 
-        for (int i = 0; i < n; i++) {
-            if (str2.contains(str1[i])) {
-
-            } else {
-                System.out.println("not anagram");
-                return;
-            }
+        char c[] = str.toCharArray();
+        char ch[] = s.toCharArray();
+        Arrays.sort(c);
+        Arrays.sort(ch);
+        String sm1 = String.valueOf(c);
+        String sm2 = String.valueOf(ch);
+        if (sm1.equals(sm2)) {
+            System.out.println("anagram");
+            return;
         }
-        System.out.println("anagram");
+        System.out.println("not anagram");
+
     }
 
 }
