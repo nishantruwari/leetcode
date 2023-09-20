@@ -1,0 +1,26 @@
+class Solution {
+    public int trap(int[] height) {
+        int maxl,maxr,waterlevel,ans=0;
+        for(int i=1;i<height.length-1;i++){
+           // waterlevel=0;
+            maxl=maxr=0;
+            for(int j=i-1;j>=0;j--){
+                if(maxl<height[j]){
+                    maxl=height[j];
+                }
+            }
+            for(int j=i+1;j<height.length;j++){
+                if(maxr<height[j]){
+                    maxr=height[j];
+                }
+            }
+            waterlevel=maxl<maxr?maxl:maxr;
+            if(waterlevel==0 || waterlevel<height[i]) continue;
+            System.out.println(waterlevel+" " + i);
+            ans=ans+waterlevel-height[i];
+        }
+        return ans;
+
+        
+    }
+}
