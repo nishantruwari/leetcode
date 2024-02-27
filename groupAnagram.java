@@ -1,28 +1,16 @@
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-
-public class groupAnagram {
-    public static void main(String[] args) {
-        String str[] = { "eat", "tea", "tan", "ate", "nat", "bat" };
-        HashMap<String, List<String>> map = new HashMap<>();
-        if (str.length == 0) {
-            ArrayList arr = new ArrayList<>();
-            return;
-
-        }
-        for (String s : str) {
-            char arr[] = s.toCharArray();
-            Arrays.sort(arr);
-            String key = String.valueOf(arr);
-            if (!map.containsKey(key)) {
-                map.put(key, new ArrayList<>());
+class Solution {
+    public List<List<String>> groupAnagrams(String[] strs) {
+        HashMap<String,List<String>> map= new HashMap<>();
+        for(String s:strs){
+            char cArr[]=s.toCharArray();
+            Arrays.sort(cArr);
+            String sorted=new String(cArr);
+            if(!map.containsKey(sorted)){
+                map.put(sorted,new LinkedList<String>());
             }
-            map.get(key).add(s);
+                map.get(sorted).add(s);
+            
         }
-        System.out.println(map.values());
-
+        return new LinkedList<>(map.values());
     }
-
 }
